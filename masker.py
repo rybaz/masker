@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
 import os
-import argparse
-import collections
 
 # Get files as variable to use later
 passFile = 'passwords.txt'
