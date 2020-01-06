@@ -11,11 +11,11 @@ resultsFile = 'results.txt'
 def main():
 
     print("[*] Converting passwords to masks..." + "\n")
-    convertAndSort(passFile)
+    convert(passFile)
     # Print out new passfile
     print("[*] Count and frequency results printed to: " + resultsFile + "\n")
 
-def convertAndSort(i): # Converting input list to hashcat masks and running analysis
+def convert(i): # Converting input list to hashcat masks and running analysis
 
     # Character conversion
     with open(i) as file:
@@ -40,8 +40,5 @@ def convertAndSort(i): # Converting input list to hashcat masks and running anal
                 maskList = maskList.join(list1)
                 outFile.write(maskList + "\n")
     
-    # Run GNU sort and uniq on results.txt
-    os.system('cat results.txt | sort| uniq -c | sort -nr | tee results.txt')
-
 if __name__== "__main__":
     main()
