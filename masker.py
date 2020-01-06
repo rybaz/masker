@@ -1,24 +1,27 @@
 #!/usr/bin/python3
 
+import os
 import argparse
+import collections
 
-# Add the ability to take a file as an argument
-parser = argparse.ArgumentParser(description='List of passwords to convert to masks')
-parser.add_argument('-f', default=1, type=str)
-# Get file as variable to use later
-passFile = 'tests.txt'
+# Get files as variable to use later
+passFile = 'passwords.txt'
+resultsFile = 'results.txt'
 
 def main():
+
+    print("[*] Converting passwords to masks..." + "\n")
+    convertAndSort(passFile)
     # Print out new passfile
-    print("New mask list:" + "\n")
-    convert(passFile)
+    print("[*] Count and frequency results printed to: " + resultsFile + "\n")
 
-def convert(i):
+def convertAndSort(i): # Converting input list to hashcat masks and running analysis
 
+    # Character conversion
     with open(i) as file:
         for line in file:
             list1 = list(line)
-            masklist = ""
+            maskList = ""
             # Remove last item in list since it will always be a newline character
             del list1[-1]
             for n, char in enumerate(list1):
@@ -30,8 +33,15 @@ def convert(i):
                     list1[n] = "?d"
                 else:
                     list1[n] = "?s"
-            # Join broken lines back to strings
-            masklist = masklist.join(list1)
-            print(masklist)
+            
+            # Writing masks to results.txt
+            with open(resultsFile, 'a+') as outFile:
+                # Join broken lines back to strings
+                maskList = maskList.join(list1)
+                outFile.write(maskList + "\n")
+    
+    # Run GNU sort and uniq on results.txt
+    os.system('cat results.txt | sort| uniq -c | sort -nr | tee results.txt')
 
-main()
+if __name__== "__main__":
+    main()
