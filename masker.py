@@ -15,7 +15,7 @@ def main():
     print("[*] Converting passwords to masks..." + "\n")
     convertAndSort(passFile)
     # Print out new passfile
-    print("\n" + "[*] Count and frequency results printed to: " + outFile)
+    print("[*] Count and frequency results printed to: " + outFile + "\n")
 
 def convertAndSort(i): # Converting input list to hashcat masks and running analysis
 
@@ -35,10 +35,13 @@ def convertAndSort(i): # Converting input list to hashcat masks and running anal
                     list1[n] = "?d"
                 else:
                     list1[n] = "?s"
-            # Join broken lines back to strings
-            maskList = maskList.join(list1)
-            print(maskList)
-        
-        # Count recurring lines and print counts
+            
+            # Writing masks to results.txt
+            with open('results.txt', 'a+') as outFile:
+                # Join broken lines back to strings
+                maskList = maskList.join(list1)
+                outFile.write(maskList + "\n")
+
+            outFile.close()
 
 main()
