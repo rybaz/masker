@@ -6,6 +6,6 @@ TODO:
 
 - [X] File input in main()
 - [X] Conversion function
-- [ ] Add function to remove dupes
-- [ ] Add sort function for mask rate of occurrence
-- [ ] Add command line arguemnts for files and outputs
+- [X] Add function to remove dupes
+- [X] Add sort function for mask rate of occurrence
+- [ ] Add command line arguments for files and outputs
