@@ -3,9 +3,6 @@
 import argparse
 import collections
 
-# Add the ability to take a file as an argument
-parser = argparse.ArgumentParser(description='List of passwords to convert to masks')
-parser.add_argument('-f', default=1, type=str)
 # Get file as variable to use later
 passFile = 'passwords.txt'
 outFile = 'results.txt'
@@ -44,4 +41,5 @@ def convertAndSort(i): # Converting input list to hashcat masks and running anal
 
             outFile.close()
 
-main()
+if __name__== "__main__":
+  main()
