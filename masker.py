@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import os
+import subprocess
 import argparse
 import collections
 
@@ -38,8 +40,11 @@ def convertAndSort(i): # Converting input list to hashcat masks and running anal
                 # Join broken lines back to strings
                 maskList = maskList.join(list1)
                 outFile.write(maskList + "\n")
+    
+    outFile.close()
 
-            outFile.close()
+    # Run GNU sort and uniq on results.txt
+    os.system('uniq -c results.txt | sort -nr | tee results.txt')
 
 if __name__== "__main__":
     main()
