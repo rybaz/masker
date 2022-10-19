@@ -10,5 +10,6 @@ cracking infrastructure, so make the most of it.
 
 ## TODO
 - [ ] automatically sort results by length to speed things up
+- [ ] auto remove duplicates
 - [ ] take arguments for input/output files
 - [ ] add JTR compat
