@@ -4,7 +4,7 @@ import os
 
 # Get files as variable to use later
 passFile = 'passwords.txt'
-resultsFile = 'results.txt'
+resultsFile = 'results.hcmask'
 
 def main():
 
